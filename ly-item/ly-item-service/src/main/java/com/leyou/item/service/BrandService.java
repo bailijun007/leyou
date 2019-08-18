@@ -66,8 +66,6 @@ public class BrandService {
 
 
     public Brand queryById(Long id){
-       // Brand brand = brandMapper.selectByPrimaryKey(id);
-
         Brand brand = brandMapper.selectByPrimaryKey(id);
         if(null==brand){
             throw new LyException(ExceptionEnums.BEAND_CANNOT_BE_FOND);
@@ -75,4 +73,11 @@ public class BrandService {
         return brand;
     }
 
+    public List<Brand> queryBrandByCid(Long cid) {
+        List<Brand> brands = brandMapper.queryBrandByCid(cid);
+        if(CollectionUtils.isEmpty(brands)){
+            throw new LyException(ExceptionEnums.BEAND_CANNOT_BE_FOND);
+        }
+        return brands;
+    }
 }

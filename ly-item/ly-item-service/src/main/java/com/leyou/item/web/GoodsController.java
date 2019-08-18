@@ -6,6 +6,7 @@ import com.leyou.item.service.GoodsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ public class GoodsController {
      * @param saleable
      * @return
      */
+    @ApiOperation("分页查询spu")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page",value = "当前页",paramType = "Integer"),
             @ApiImplicitParam(name = "rows",value = "每页显示条数",paramType = "Integer"),

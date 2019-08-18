@@ -6,6 +6,7 @@ import com.leyou.item.service.BrandService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,7 @@ public class BrandController {
      * @param key
      * @return
      */
+    @ApiOperation("分页查询品牌")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page",value = "当前页数",paramType = "Integer"),
             @ApiImplicitParam(name = "rows",value = "每页显示条数",paramType = "Integer"),
@@ -47,10 +49,24 @@ public class BrandController {
             return ResponseEntity.ok(brandService.queryBrandByPage(page,rows,sortBy,desc,key));
     }
 
+    @ApiOperation("批量保存品牌")
+    @ApiImplicitParam(name = "cids",value = "商品分类（category）的id",paramType = "Long")
     @PostMapping
     public ResponseEntity<Void> savaBrand(Brand brand,@RequestParam("cids") List<Long> cids){
         brandService.savaBrand(brand,cids);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    /**
+     * 根据(商品分类)category的id查询品牌信息
+     * @param cid   商品分类（category）的id
+     * @return
+     */
+    @ApiOperation("根据(商品分类)category的id查询品牌信息")
+    @ApiImplicitParam(name = "cid",value = "商品分类（category）的id")
+    @GetMapping("/cid/{cid}")
+    public ResponseEntity<List<Brand>> queryBrandByCid(@PathVariable("cid") Long cid){
+        return ResponseEntity.ok(brandService.queryBrandByCid(cid));
     }
 
 
