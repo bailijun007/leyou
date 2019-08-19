@@ -8,6 +8,7 @@ import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @ApiModel("spu实体类，该实体类描述的是一个抽象性的商品")
 @Data
@@ -80,5 +81,13 @@ public class Spu {
   @ApiModelProperty("品牌名称")
   @Transient//不是数据库字段，需要加上@Transient注解
   private String bname;
+
+ @ApiModelProperty("skus集合")
+ @Transient//不是数据库字段，需要加上@Transient注解
+ private List<Sku> skus;
+
+ @ApiModelProperty("spu详情实体类")
+ @Transient//不是数据库字段，需要加上@Transient注解
+ private SpuDetail spuDetail;
 
 }

@@ -1,6 +1,7 @@
 package com.leyou.item.web;
 
 import com.leyou.common.vo.PageResult;
+import com.leyou.item.pojo.Sku;
 import com.leyou.item.pojo.Spu;
 import com.leyou.item.service.GoodsService;
 import io.swagger.annotations.Api;
@@ -8,11 +9,9 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Api(tags = "商品相关请求")
@@ -47,5 +46,10 @@ public class GoodsController {
              return ResponseEntity.ok(goodsService.querySpuByPage(page,rows,saleable,key));
     }
 
+    @PostMapping("goods")
+    public ResponseEntity<Void> saveGoods(@RequestBody Spu spu){
+        goodsService.saveGoods(spu);
+        return ResponseEntity.status(HttpStatus.CREATED).build();//无返回值用ResponseEntity.status(HttpStatus.CREATED).build()
+    }
 
 }

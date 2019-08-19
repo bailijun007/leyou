@@ -16,6 +16,7 @@ public enum ExceptionEnums {
     CATEGORY_NOT_BE_FOND(404,"商品分类不存在"),
     BEAND_SAVE_EORRR(500,"商品品牌保存失败"),
     UPLOAD_FILE_EORRR(500,"文件上传失败"),
+    INSERT_GOODS_EORRR(500,"新增商品失败"),
     FILE_TYPE_NOT_MATCH(400,"无效的文件类型"),
     ;
     private int code;
