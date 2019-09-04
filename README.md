@@ -27,5 +27,36 @@
                 password: 12345678
                 driver: com.mysql.cj.jdbc.Driver
        
+2.解决报错java.lang.TypeNotPresentException: Type javax.xml.bind.JAXBContext not present
+    原因：今天在运行程序的时候，一直报“java.lang.TypeNotPresentException: Type javax.xml.bind.JAXBContext not present”的错误，
+    代码之前一直没有动过，唯一的改变的就是之前用的是jdk8，昨天卸载了jdk8，重装了jdk12.
+    百度原因，发现是因为用了jdk12的缘故。因为JAXB-API是java ee的一部分，在jdk12中没有在默认的类路径中。从jdk9开始java引入了模块的概念，
+    可以使用模块命令--add-modles java.xml.bind引入jaxb-api。也可以选择另一种解决方法，在maven里面加入下面依赖，可以解决这个问题：
+  解决方法：
+    <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-impl</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>activation</artifactId>
+        <version>1.1.1</version>
+    </dependency>
 
-
+3.@EnableDiscoveryClient注解和@EnableEurekaClient注解的相同点与不同点
+    在启动类上添加注解@EnableDiscoveryClient 或@EnableEurekaClient并且
+    加上相关依赖，并进行相应配置，即可将微服务注册到服务发现组件上
+    相同点：都是能够让注册中心能够发现，扫描到改服务
+    不同点：@EnableEurekaClient只适用于Eureka作为注册中心，@EnableDiscoveryClient 可以是其他注册中心
+    
