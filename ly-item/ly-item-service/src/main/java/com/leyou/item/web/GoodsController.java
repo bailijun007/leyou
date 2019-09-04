@@ -3,6 +3,7 @@ package com.leyou.item.web;
 import com.leyou.common.vo.PageResult;
 import com.leyou.item.pojo.Sku;
 import com.leyou.item.pojo.Spu;
+import com.leyou.item.pojo.SpuDetail;
 import com.leyou.item.service.GoodsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @Api(tags = "商品相关请求")
@@ -46,10 +49,55 @@ public class GoodsController {
              return ResponseEntity.ok(goodsService.querySpuByPage(page,rows,saleable,key));
     }
 
+    /**
+     * 商品新增
+     * @param spu
+     * @return
+     */
+    @ApiOperation("商品新增")
     @PostMapping("goods")
     public ResponseEntity<Void> saveGoods(@RequestBody Spu spu){
         goodsService.saveGoods(spu);
         return ResponseEntity.status(HttpStatus.CREATED).build();//无返回值用ResponseEntity.status(HttpStatus.CREATED).build()
     }
+
+    /**
+     * 根据spu的id查询详情detail
+     * @param id
+     * @return
+     */
+    @ApiOperation("根据spuid查询详情")
+    @ApiImplicitParam(name = "id",value = "spu的id",paramType = "Long")
+    @GetMapping("/spu/detail/{id}")
+    public ResponseEntity<SpuDetail> queryDetailById(@PathVariable("id") Long id){
+        return ResponseEntity.ok(goodsService.queryDetailById(id));
+    }
+
+    /**
+     * 根据spuid查询下面所有的sku
+     * @param id
+     * @return
+     */
+    @ApiOperation("根据spuid查询下面所有的sku")
+    @ApiImplicitParam(name = "id",value = "spu的id",paramType = "Long")
+    @GetMapping("/sku/list")
+    public ResponseEntity<List<Sku>> querySkuBySkuid(@RequestParam("id") Long id){
+        return ResponseEntity.ok(goodsService.querySkuBySkuid(id));
+    }
+
+    /**
+     * 商品修改
+     * @param sku
+     * @return
+     */
+    @ApiOperation("商品修改")
+    @PostMapping("goods")
+    public ResponseEntity<Void> updateGoods(@RequestBody Spu spu){
+        goodsService.updateGoods(spu);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
+    }
+
+
 
 }
