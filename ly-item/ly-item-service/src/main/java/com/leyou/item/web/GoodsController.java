@@ -87,11 +87,11 @@ public class GoodsController {
 
     /**
      * 商品修改
-     * @param sku
+     * @param spu
      * @return
      */
     @ApiOperation("商品修改")
-    @PostMapping("goods")
+    @PutMapping("goods")
     public ResponseEntity<Void> updateGoods(@RequestBody Spu spu){
         goodsService.updateGoods(spu);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
