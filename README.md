@@ -9,10 +9,23 @@
 商品分类的帮助文档：http://localhost:8081/swagger-ui.html
 
 总结：
-1.解决MySQL 8.0java.sql.SQLException: Unknown system variable 'tx_isolation'异常
-原因：从MySQL5.7升级到8.0之后报异常：SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77e9cf18] was not registered fo……
-解决方法：
- （1）把jdbc连接驱动升级下
- （2）驱动名称改为com.mysql.cj.jdbc.Driver
-  (3)连接地址改为jdbc:mysql://127.0.0.1:3306/db_cms?useSSL=true&serverTimezone=GMT&useUnicode=true&characterEncoding=utf8
+1.解决Mysql8 报错：ERROR 1193 (HY000): Unknown system variable 'tx_isolation'
+    原因：是因为系统安装的数据库版本太高，而项目中导入的jdbc 的jar包版本太低，两者不一致所导致的
+    (1)在pom.xml文件中将MySQL Connector / J版本升级为8：
+       <!-- MySQL Connector / J是MySQL的官方JDBC驱动程序。 -->
+       <dependency>
+                   <groupId>mysql</groupId>
+                   <artifactId>mysql-connector-java</artifactId>
+                   <version>8.0.15</version> //这里使用自己数据库版本   
+       </dependency>
+       （2）驱动名称改为com.mysql.cj.jdbc.Driver
+       （3）连接地址改为jdbc:mysql://127.0.0.1:3306/数据库名?useSSL=true&serverTimezone=GMT&useUnicode=true&characterEncoding=utf8
+       例如：
+              datasource:
+                url: jdbc:mysql://127.0.0.1:3306/yun6?useSSL=true&serverTimezone=GMT&useUnicode=true&characterEncoding=utf8
+                username: root
+                password: 12345678
+                driver: com.mysql.cj.jdbc.Driver
+       
+
 
