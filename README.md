@@ -6,3 +6,4 @@
 客服可以在后台处理退款操作
 
 乐优商城笔记：https://blog.csdn.net/aa6272438/article/details/89304763
+商品分类的帮助文档：http://localhost:8081/swagger-ui.html
