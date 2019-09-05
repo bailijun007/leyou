@@ -41,7 +41,7 @@ public class SpecificationController {
      * @return
      */
     @ApiOperation("查询参数集合")
-    @GetMapping("groups")
+    @GetMapping("params")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "gid",value = "组id",paramType = "Long"),
             @ApiImplicitParam(name = "cid",value = "分类id",paramType = "Long"),
