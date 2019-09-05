@@ -7,6 +7,7 @@
 
 乐优商城笔记：https://blog.csdn.net/aa6272438/article/details/89304763
 商品分类的帮助文档：http://localhost:8081/swagger-ui.html
+Eureka注册中心：http://localhost:10086/
 
 总结：
 1.解决Mysql8 报错：ERROR 1193 (HY000): Unknown system variable 'tx_isolation'
