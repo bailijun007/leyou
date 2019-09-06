@@ -8,7 +8,8 @@
 乐优商城笔记：https://blog.csdn.net/aa6272438/article/details/89304763
 商品分类的帮助文档：http://localhost:8081/swagger-ui.html
 Eureka注册中心：http://localhost:10086/
-kibana:http://127.0.0.1:5601
+elasticsearch:http://127.0.0.1:9200/
+kibana界面:http://127.0.0.1:5601/
 
 总结：
 1.解决Mysql8 报错：ERROR 1193 (HY000): Unknown system variable 'tx_isolation'
@@ -62,3 +63,7 @@ kibana:http://127.0.0.1:5601
     相同点：都是能够让注册中心能够发现，扫描到改服务
     不同点：@EnableEurekaClient只适用于Eureka作为注册中心，@EnableDiscoveryClient 可以是其他注册中心
     
+4.启动Elasticsearch说明：
+    1.先启动Elasticsearch，在安装目录的bin文件夹中启动elasticsearch.bat（以管理员身份运行）即可。
+      这里需要注意一点就是，如果项目中需要用到分词器的话 要先将分词器的安装包解压后放在Elasticsearch目录的plugins目录下，然后重启Elasticsearch即可。 
+    2.再启动kibana，在安装目录的bin文件夹中启动kibana.bat（以管理员身份运行）即可。
