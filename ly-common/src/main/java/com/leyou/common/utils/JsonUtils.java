@@ -3,16 +3,17 @@ package com.leyou.common.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.istack.internal.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.val;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.lang.Nullable;
 
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -87,25 +88,9 @@ public class JsonUtils {
     }
 */
 
-   // public static void main(String[] args) {
-      //  User user=new User("jack",22);
-//        String s = serialize(user);
-//        System.out.println(s);
-
-//       String json="[20,15,23,21]";
-//        List<String> json1 = parseList(json, String.class);
-//        System.out.println(json1);
-
-      // String json="{\"name\":\"tom\",\"age\":\"23\"}";
-//        Map<String, String> map = parseMap(json, String.class, String.class);
-//        System.out.println(map);
-
-       /* String json="[{\"name\":\"tom\",\"age\":\"23\"},{\"name\":\"jack\",\"age\":\"21\"}]";
-        List<Map<String, String>> maps = nativeRead(json, new TypeReference<List<Map<String, String>>>() {
-        });
-        for (Map<String, String> map : maps) {
-            System.out.println(map);
-        }*/
-
-    //}
+    public static void main(String[] args) {
+        JsonUtils jsonUtils = new JsonUtils();
+         String serialize = jsonUtils.serialize(Arrays.asList(1, 2, 3));
+        System.out.println("serialize = " + serialize);
+    }
 }

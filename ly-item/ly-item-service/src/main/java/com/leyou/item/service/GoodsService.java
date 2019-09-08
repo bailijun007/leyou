@@ -133,7 +133,7 @@ public class GoodsService {
         return detail;
     }
 
-    public List<Sku> querySkuBySkuid(Long spuId) {
+    public List<Sku> querySkuBySpuid(Long spuId) {
       //查询sku
         Sku sku = new Sku();
         sku.setSpuId(spuId);

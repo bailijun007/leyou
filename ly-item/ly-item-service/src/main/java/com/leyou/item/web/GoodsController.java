@@ -81,8 +81,8 @@ public class GoodsController {
     @ApiOperation("根据spuid查询下面所有的sku")
     @ApiImplicitParam(name = "id",value = "spu的id",paramType = "Long")
     @GetMapping("/sku/list")
-    public ResponseEntity<List<Sku>> querySkuBySkuid(@RequestParam("id") Long id){
-        return ResponseEntity.ok(goodsService.querySkuBySkuid(id));
+    public ResponseEntity<List<Sku>> querySkuBySpuid(@RequestParam("id") Long id){
+        return ResponseEntity.ok(goodsService.querySkuBySpuid(id));
     }
 
     /**

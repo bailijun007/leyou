@@ -2,6 +2,7 @@ package com.leyou.search.pojo;
  
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import jdk.javadoc.internal.doclets.toolkit.taglets.SeeTaglet;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -11,7 +12,8 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
- 
+import java.util.Set;
+
 /**
  * Feature:搜索时对应的实体类
  */
@@ -47,7 +49,7 @@ public class Goods {
     private Date createTime;
 
     @ApiModelProperty("价格")
-    private List<Long> price;
+    private Set<Long> price;
     @Field(type = FieldType.Keyword, index = false)
 
     @ApiModelProperty("sku信息的json结构")
